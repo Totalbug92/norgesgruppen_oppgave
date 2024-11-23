@@ -8,12 +8,12 @@ interface ItemsCarouselProps {
 const mockData = products;
 
 function ItemsCarousel({ productIds }: ItemsCarouselProps) {
-  const [products, setProducts] = useState<ProductType[]>([]);
+  const [productList, setProductList] = useState<ProductType[]>([]);
 
   useEffect(() => {
     // Filter products based on the provided productIds
     const similarProducts = mockData.filter((product) => productIds.includes(product.id));
-    setProducts(similarProducts);
+    setProductList(similarProducts);
   }, [productIds]);
 
   return (
@@ -22,7 +22,7 @@ function ItemsCarousel({ productIds }: ItemsCarouselProps) {
       role="region"
       aria-label="Product Carousel"
     >
-      {products.map((product) => (
+      {productList.map((product) => (
         <div
           key={product.id}
           className="carousel-item flex-shrink-0 w-64 bg-white shadow-md rounded-lg p-4 snap-start"
