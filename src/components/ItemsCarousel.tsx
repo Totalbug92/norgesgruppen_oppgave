@@ -17,11 +17,26 @@ function ItemsCarousel({ productIds }: ItemsCarouselProps) {
   }, [productIds]);
 
   return (
-    <div className="carousel flex overflow-x-scroll space-x-4 p-4 snap-x snap-mandatory">
+    <div
+      className="carousel flex overflow-x-scroll space-x-4 p-4 snap-x snap-mandatory"
+      role="region"
+      aria-label="Product Carousel"
+    >
       {products.map((product) => (
-        <div key={product.id} className="carousel-item flex-shrink-0 w-64 bg-white shadow-md rounded-lg p-4 snap-start">
-          <img src={product.imageUrl} alt={product.name} className="w-full h-40 object-cover rounded-t-lg" />
-          <div className="mt-2 text-lg font-semibold">{product.name}</div>
+        <div
+          key={product.id}
+          className="carousel-item flex-shrink-0 w-64 bg-white shadow-md rounded-lg p-4 snap-start"
+          role="group"
+          aria-labelledby={`product-${product.id}-name`}
+        >
+          <img
+            src={product.imageUrl}
+            alt={product.name}
+            className="w-full h-40 object-cover rounded-t-lg"
+          />
+          <div id={`product-${product.id}-name`} className="mt-2 text-lg font-semibold">
+            {product.name}
+          </div>
           <div className="text-gray-500">${product.price}</div>
         </div>
       ))}

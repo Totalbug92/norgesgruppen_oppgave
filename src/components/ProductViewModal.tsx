@@ -39,16 +39,20 @@ function ProductViewModal({
                 className 
             )}
             onClick={handleBackdropClick}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
         >
             <div className="bg-white rounded-lg shadow-lg p-6 relative max-w-lg w-full max-h-screen overflow-y-auto">
                 <button
                     className="absolute top-2 right-2 text-gray-500 hover:text-white w-8 h-8"
                     onClick={onClose}
+                    aria-label="Close modal"
                 >
                     &times;
                 </button>
                 <img src={data.imageUrl} alt={data.name} className="w-full h-64 object-contain rounded-t-lg mb-4" />
-                <h2 className="text-2xl font-bold mb-4">{data.name}</h2>
+                <h2 id="modal-title" className="text-2xl font-bold mb-4">{data.name}</h2>
                 <p className="mb-4">{data.description}</p>
                 <div className="mb-4">
                     <h3 className="text-lg font-semibold">Nutritional Content:</h3>
@@ -60,7 +64,7 @@ function ProductViewModal({
                     </ul>
                 </div>
                 <p className="text-lg font-semibold mb-4">{data.price.toFixed(2)} Kr</p>
-                <button className='w-full' onClick={() => addToCart()}>
+                <button className='w-full' onClick={() => addToCart()} aria-label="Add to cart">
                     Add to Cart
                 </button>
                 <h3 className="text-lg font-semibold mt-4">Similar Products:</h3>

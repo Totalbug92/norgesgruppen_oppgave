@@ -8,11 +8,11 @@ interface Props {
 
 function ProductList({ data }: Props) {
     return (
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
+        <ul className="grid grid-cols-2 gap-4 md:grid-cols-5">
             {data.map((product) => (
                 <ProductListItem key={product.id} product={product} />
             ))}
-        </div>
+        </ul>
     );
 }
 
